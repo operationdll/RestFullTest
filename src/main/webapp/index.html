@@ -1,0 +1,68 @@
+<html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ </head>
+ <script src="jquery-3.1.1.min.js"></script>
+ <script>
+	$(function(){
+		//查询
+		$("#queryBnt").click(function(){
+			$.ajax({
+				type: "GET",
+				dataType: "json",
+				url: "http://localhost:8080/school/getSchoolList.do",
+				data: {token:'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiLnlKjmiLciLCJpc3MiOiLnrb7lj5HogIUiLCJleHAiOjE1MzY3OTUwNzcsImlhdCI6MTUzNjc5NTAxNywidXNlcmlkIjoiTVlJRCJ9.Wh8MrjP0txGo_10CwnIjFTcJeLOIBd6p0LvYM2Zulb4'},
+				success: function(data){
+					console.log(data);
+				}
+			});
+		});
+		//新增
+		$("#addBnt").click(function(){
+			 $.ajax({
+				type: "POST",
+				dataType: "json",
+				url: "http://localhost:8080/school/addItem.do",
+				data: {name:'Test',aid:1},
+				success: function(data){
+					console.log(data);
+				}
+			});
+		});
+		//修改
+		$("#updBnt").click(function(){
+			 $.ajax({
+				type: "PUT",
+				dataType: "json",
+				url: "http://localhost:8080/school/updItem.do",
+				data: {name:'Test999',aid:1,id:1},
+				success: function(data){
+					console.log(data);
+				}
+			});
+		});
+		//删除
+		$("#delBnt").click(function(){
+			 $.ajax({
+				type: "POST",
+				dataType: "json",
+				url: "http://localhost:8080/school/delItem.do",
+				data: {"_method":"delete",id:1},
+				success: function(data){
+					console.log(data);
+				}
+			});
+		});
+	});
+</script>
+ <body>
+  <a id="queryBnt" href="javascript:;">查询</a>  
+  <a id="addBnt" href="javascript:;">新增</a>
+  <a id="updBnt" href="javascript:;">修改</a>
+  <a id="delBnt" href="javascript:;">删除</a>
+ </body>
+</html>
